@@ -15,9 +15,7 @@ alias be='bundle exec'
 # Generally want to order by CPU usage.
 alias top="top -o cpu"
 
-parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
-}
+source ~/profile/git_profile
 
 # shell variables
 PS1="\u@\h:\w\[\033[31m\](\$(parse_git_branch))\[\033[00m\]$ "
@@ -82,23 +80,6 @@ shopt -s histappend
 
 # Add pip installed python scripts to path
 export PATH=${PATH}:/usr/local/share/python
-
-source ~/git-completion.bash
-
-git_summary() {
-    git log HEAD --not master --shortstat -- . | awk '/^ [0-9]/ { f += $1; i += $4; d += $6 } END { net = i - d; printf("%d files changed, %d insertions(+), %d deletions(-), %d net\n", f, i, d, net) }'
-}
-git_mostchanged() {
-    git log --name-status | egrep '^A&!^Author|^D&!^Date|^M' | grep -v Merge | awk '{print $2}' | sort | uniq -c | sort -nr
-}
-
-git_rebase_on_master() {
-    CURR_BRANCH=`parse_git_branch`;
-    git co master;
-    git pull;
-    git co $CURR_BRANCH;
-    git rebase master;
-}
 
 search_and_replace_recursive() {
     local search_term="$1"

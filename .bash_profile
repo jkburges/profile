@@ -13,8 +13,8 @@ alias be='bundle exec'
 # Generally want to order by CPU usage.
 alias top="top -o cpu"
 
-source ~/profile/.git_profile
-source ~/profile/.java_profile
+source ${PROFILE_SRC_PATH}/.git_profile
+source ${PROFILE_SRC_PATH}/.java_profile
 
 # shell variables
 PS1="\u@\h:\w\[\033[31m\](\$(parse_git_branch))\[\033[00m\]$ "

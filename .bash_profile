@@ -1,9 +1,7 @@
 # aliases
 alias l='ls -laGF'
 alias ll=l
-#alias grails2='GRAILS_HOME=/Applications/grails-2.0.4 /Applications/grails-2.0.4/bin/grails'
 alias postgres_restart='sudo -u postgres PGDATA=/usr/local/pgsql/data pg_ctl restart'
-alias grails2='GRAILS_HOME=/Applications/grails-2.1.1 /Applications/grails-2.1.1/bin/grails'
 
 alias trim="sed 's/^[[:space:]]*//;s/[[:space:]]*$//'"
 
@@ -16,6 +14,7 @@ alias be='bundle exec'
 alias top="top -o cpu"
 
 source ~/profile/.git_profile
+source ~/profile/.java_profile
 
 # shell variables
 PS1="\u@\h:\w\[\033[31m\](\$(parse_git_branch))\[\033[00m\]$ "
@@ -32,19 +31,8 @@ export PATH=${PATH}:/usr/local/apache-maven-2.2.1/bin:/usr/local/pgsql/bin:/Appl
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # Finished adapting your PATH environment variable for use with MacPorts.
 
-export GRAILS_OPTS="-Xmx2G -Xms256m -XX:PermSize=64m -XX:MaxPermSize=512m"
-export MAVEN_OPTS="-Xmx4G -Xms256m -XX:PermSize=64m -XX:MaxPermSize=512m"
-
-#export GRAILS_HOME=/Applications/grails-1.4.0.M1
-export GRAILS_HOME=/Applications/grails-1.3.7
-
-# Added for tomcat.
-export JAVA_OPTS="-Xmx2G -Xms256m -XX:PermSize=64m -XX:MaxPermSize=512m"
-
 # Selenimum tests using chrome
 export PATH=$PATH:"/Applications/Google Chrome.app/Contents/MacOS"
-
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home
 
 # See: https://github.com/sstephenson/rbenv#section_2.2
 eval "$(rbenv init -)"
@@ -59,11 +47,6 @@ google()
 	open "http://www.google.com.au/search?q=$1"
 }
 
-
-# Setting PATH for JRuby 1.7.0.RC2
-# The orginal version is saved in .bash_profile.jrubysave
-#PATH="${PATH}:/Library/Frameworks/JRuby.framework/Versions/Current/bin"
-#export PATH
 
 export VAGRANT_USE_CACHER=true
 export VAGRANT_MEMORY=2048

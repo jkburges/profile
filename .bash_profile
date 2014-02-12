@@ -101,7 +101,7 @@ export PATH=/usr/local/share/npm/bin:$PATH
 
 
 # Vagrant/virtual box aliases
-alias runningsvms='VBoxManage list runningvms'
+alias runningvms='VBoxManage list runningvms'
 
 # Git shortcuts
 alias gc='git clone'

@@ -21,7 +21,7 @@ PS1="\u@\h:\w\[\033[31m\](\$(parse_git_branch))\[\033[00m\]$ "
 
 export EDITOR=vi
 
-export PATH=${PATH}:/usr/local/apache-maven-2.2.1/bin:/usr/local/pgsql/bin:/Applications/grails-1.3.7/bin:/usr/local/mysql/bin:/Applications/groovy-1.8.1/bin:/Applications/phantomjs-1.7.0-macosx/bin:/Applications/packer
+export PATH=${PATH}:/usr/local/apache-maven-2.2.1/bin:/usr/local/pgsql/bin:/Applications/grails-1.3.7/bin:/usr/local/mysql/bin:/Applications/groovy-1.8.1/bin:/Applications/phantomjs-1.9.7-macosx/bin:/Applications/packer
 
 ##
 # Your previous /Users/jburgess/.profile file was backed up as /Users/jburgess/.profile.macports-saved_2010-09-06_at_09:47:37
@@ -84,7 +84,7 @@ export PATH=/usr/local/share/npm/bin:$PATH
 
 
 # Vagrant/virtual box aliases
-alias runningvms='VBoxManage list runningvms'
+alias vms='VBoxManage list vms -l | egrep "^Name:|^State:" | grep -v "Host path"'
 
 # Git shortcuts
 alias gc='git clone'

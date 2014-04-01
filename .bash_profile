@@ -15,6 +15,7 @@ alias top="top -o cpu"
 
 source ${PROFILE_SRC_PATH}/.git_profile
 source ${PROFILE_SRC_PATH}/.java_profile
+source ${PROFILE_SRC_PATH}/.brew_profile
 
 # shell variables
 PS1="\u@\h:\w\[\033[31m\](\$(parse_git_branch))\[\033[00m\]$ "

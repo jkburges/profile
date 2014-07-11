@@ -21,8 +21,7 @@ source ${PROFILE_SRC_PATH}/.brew_profile
 PS1="\u@\h:\w\[\033[31m\](\$(parse_git_branch))\[\033[00m\]$ "
 
 export EDITOR=vi
-
-export PATH=${PATH}:/usr/local/apache-maven-2.2.1/bin:/usr/local/pgsql/bin:/Applications/grails-1.3.7/bin:/usr/local/mysql/bin:/Applications/groovy-1.8.1/bin:/Applications/phantomjs-1.9.7-macosx/bin:/Applications/packer
+export PATH=/usr/local/Cellar/gnu-sed/4.2.2/bin:/usr/local/opt/coreutils/libexec/gnubin:${PATH}:/usr/local/apache-maven-2.2.1/bin:/usr/local/pgsql/bin:/Applications/grails-1.3.7/bin:/usr/local/mysql/bin:/Applications/groovy-1.8.1/bin:/Applications/phantomjs-1.9.7-macosx/bin:/Applications/packer
 
 ##
 # Your previous /Users/jburgess/.profile file was backed up as /Users/jburgess/.profile.macports-saved_2010-09-06_at_09:47:37
@@ -80,6 +79,18 @@ pulls() {
     cd -
 }
 
+# Climb dir hierarchy until .git is found (or to /).
+cdrt() {
+    `ls .git 2>&1 > /dev/null`
+    local git_dir=$?
+    while [[ git_dir != 0 && `pwd` != '/' ]]; do
+        pwd
+        cd ..
+        `ls .git 2>&1 > /dev/null`
+        git_dir=$?
+    done
+}
+
 # npm binaries, e.g. phantom-jasmine
 export PATH=/usr/local/share/npm/bin:$PATH
 
@@ -93,7 +104,11 @@ alias gc='git clone'
 # Portal overrides
 export WMS_SCANNER_URL="http://10.11.12.13/wmsscanner"
 export WFS_SCANNER_URL="http://10.11.12.13/wfsscanner"
-export DATA_SOURCE_URL="jdbc:postgresql://10.11.12.13:5432/imos123_portal?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory"
+export DATA_SOURCE_URL="jdbc:postgresql://localhost:5432/portal_imos123"
+export GOGODUCK_URL="http://gogoduck.aodn.org.au/gogoduck"
+export GEONETWORK_URL="http://catalogue-123.aodn.org.au/geonetwork"
+
+export PATH=/usr/local/bin:${PATH}
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
 [[ -s "/Users/jburgess/.gvm/bin/gvm-init.sh" ]] && source "/Users/jburgess/.gvm/bin/gvm-init.sh"

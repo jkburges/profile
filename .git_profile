@@ -11,7 +11,7 @@ git_summary() {
 }
 
 git_mostchanged() {
-    git log --name-status | egrep '^A&!^Author|^D&!^Date|^M' | grep -v Merge | awk '{print $2}' | sort | uniq -c | sort -nr
+    git log --name-only --oneline --no-merges | egrep -v '^([0-9]|[a-z])*\s'| sort | uniq -c | sort -nr
 }
 
 git_rebase_on_master() {

@@ -9,6 +9,7 @@ alias latest_10='ll -rt | tail'
 
 alias knife_ls_all='knife ssh 'name:imos-*' "ls -la"'
 alias be='bundle exec'
+alias ce='chef exec'
 
 # Generally want to order by CPU usage.
 alias top="top -o cpu"
@@ -42,9 +43,8 @@ source "/Users/jburgess/.gvm/bin/gvm-init.sh"
 # See: http://tecparatodos.com/2011/07/24/installing-ruby-on-rails-on-mac-os-x-lion/
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
-google()
-{
-	open "http://www.google.com.au/search?q=$1"
+google() {
+    open "http://www.google.com.au/search?q=$1"
 }
 
 
@@ -106,9 +106,10 @@ export WMS_SCANNER_URL="http://10.11.12.13/wmsscanner"
 export WFS_SCANNER_URL="http://10.11.12.13/wfsscanner"
 export DATA_SOURCE_URL="jdbc:postgresql://localhost:5432/portal_imos123"
 export GOGODUCK_URL="http://gogoduck.aodn.org.au/gogoduck"
-export GEONETWORK_URL="http://catalogue-123.aodn.org.au/geonetwork"
 
 export PATH=/usr/local/bin:${PATH}
+
+source $(brew --prefix nvm)/nvm.sh
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
 [[ -s "/Users/jburgess/.gvm/bin/gvm-init.sh" ]] && source "/Users/jburgess/.gvm/bin/gvm-init.sh"

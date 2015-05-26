@@ -17,6 +17,7 @@ alias top="top -o cpu"
 source ${PROFILE_SRC_PATH}/.git_profile
 source ${PROFILE_SRC_PATH}/.java_profile
 source ${PROFILE_SRC_PATH}/.brew_profile
+source ${PROFILE_SRC_PATH}/.ruby_profile
 
 # shell variables
 PS1="\u@\h:\w\[\033[31m\](\$(parse_git_branch))\[\033[00m\]$ "
@@ -34,9 +35,6 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 # Selenimum tests using chrome
 export PATH=$PATH:"/Applications/Google Chrome.app/Contents/MacOS"
-
-# See: https://github.com/sstephenson/rbenv#section_2.2
-eval "$(rbenv init -)"
 
 source "/Users/jburgess/.gvm/bin/gvm-init.sh"
 

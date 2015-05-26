@@ -1,0 +1,2 @@
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"'
+echo 'eval "$(rbenv init -)"'

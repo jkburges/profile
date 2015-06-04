@@ -19,6 +19,8 @@ source ${PROFILE_SRC_PATH}/.java_profile
 source ${PROFILE_SRC_PATH}/.brew_profile
 source ${PROFILE_SRC_PATH}/.ruby_profile
 
+source ${PROFILE_SRC_PATH}/.git-completion.bash
+
 # shell variables
 PS1="\u@\h:\w\[\033[31m\](\$(parse_git_branch))\[\033[00m\]$ "
 

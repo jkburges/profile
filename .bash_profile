@@ -19,7 +19,7 @@ source ${PROFILE_SRC_PATH}/.java_profile
 source ${PROFILE_SRC_PATH}/.brew_profile
 source ${PROFILE_SRC_PATH}/.ruby_profile
 
-source ${PROFILE_SRC_PATH}/git-completion.bash
+#source ${PROFILE_SRC_PATH}/git-completion.bash
 
 # shell variables
 PS1="\u@\h:\w\[\033[31m\](\$(parse_git_branch))\[\033[00m\]$ "
@@ -38,7 +38,7 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # Selenimum tests using chrome
 export PATH=$PATH:"/Applications/Google Chrome.app/Contents/MacOS"
 
-source "/Users/jburgess/.gvm/bin/gvm-init.sh"
+source "/Users/jkburges/.gvm/bin/gvm-init.sh"
 
 # See: http://tecparatodos.com/2011/07/24/installing-ruby-on-rails-on-mac-os-x-lion/
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
@@ -74,7 +74,7 @@ search_and_replace_recursive() {
 }
 
 pulls() {
-    cd /Users/jburgess/git/utilities/github
+    cd /Users/jkburges/git/utilities/github
     be lib/list_pulls.rb --short | sort
     cd -
 }
@@ -112,4 +112,4 @@ export PATH=/usr/local/bin:${PATH}
 source $(brew --prefix nvm)/nvm.sh
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-[[ -s "/Users/jburgess/.gvm/bin/gvm-init.sh" ]] && source "/Users/jburgess/.gvm/bin/gvm-init.sh"
+[[ -s "/Users/jkburges/.gvm/bin/gvm-init.sh" ]] && source "/Users/jkburges/.gvm/bin/gvm-init.sh"

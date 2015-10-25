@@ -36,8 +36,6 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # Selenimum tests using chrome
 export PATH=$PATH:"/Applications/Google Chrome.app/Contents/MacOS"
 
-source "/Users/jkburges/.gvm/bin/gvm-init.sh"
-
 # See: http://tecparatodos.com/2011/07/24/installing-ruby-on-rails-on-mac-os-x-lion/
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
@@ -110,4 +108,4 @@ export PATH=/usr/local/bin:${PATH}
 source $(brew --prefix nvm)/nvm.sh
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-[[ -s "/Users/jkburges/.gvm/bin/gvm-init.sh" ]] && source "/Users/jkburges/.gvm/bin/gvm-init.sh"
+export SDKMAN_DIR="/Users/jkburges/.sdkman" && source "/Users/jkburges/.sdkman/bin/sdkman-init.sh"

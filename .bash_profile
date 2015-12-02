@@ -14,6 +14,11 @@ alias ce='chef exec'
 # Generally want to order by CPU usage.
 alias top="top -o cpu"
 
+# postgresql shortcuts
+alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
+
+
 source ${PROFILE_SRC_PATH}/.git_profile
 source ${PROFILE_SRC_PATH}/.java_profile
 source ${PROFILE_SRC_PATH}/.brew_profile
@@ -104,8 +109,3 @@ export DATA_SOURCE_URL="jdbc:postgresql://localhost:5432/portal_imos123"
 export GOGODUCK_URL="http://gogoduck.aodn.org.au/gogoduck"
 
 export PATH=/usr/local/bin:${PATH}
-
-source $(brew --prefix nvm)/nvm.sh
-
-#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-export SDKMAN_DIR="/Users/jkburges/.sdkman" && source "/Users/jkburges/.sdkman/bin/sdkman-init.sh"

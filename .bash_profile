@@ -2,6 +2,7 @@
 alias l='ls -laGF'
 alias ll=l
 alias postgres_restart='sudo -u postgres PGDATA=/usr/local/pgsql/data pg_ctl restart'
+alias eb=~/.ebvenv/bin/eb
 
 alias trim="sed 's/^[[:space:]]*//;s/[[:space:]]*$//'"
 
@@ -17,7 +18,6 @@ alias top="top -o cpu"
 # postgresql shortcuts
 alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
 alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
-
 
 source ${PROFILE_SRC_PATH}/.git_profile
 source ${PROFILE_SRC_PATH}/.java_profile
@@ -54,6 +54,7 @@ export VAGRANT_MEMORY=2048
 export VAGRANT_OS_KEYPAIR_NAME=nectar
 
 export PATH=/Applications/Vagrant/bin:$PATH
+export PATH=/Applications/terraform:$PATH
 
 ## bash history db
 #
@@ -102,10 +103,10 @@ alias vms='VBoxManage list vms -l | egrep "^Name:|^State:" | grep -v "Host path"
 # Git shortcuts
 alias gc='git clone'
 
-# Portal overrides
-export WMS_SCANNER_URL="http://10.11.12.13/wmsscanner"
-export WFS_SCANNER_URL="http://10.11.12.13/wfsscanner"
-export DATA_SOURCE_URL="jdbc:postgresql://localhost:5432/portal_imos123"
-export GOGODUCK_URL="http://gogoduck.aodn.org.au/gogoduck"
+# AWS CLI command completion
+complete -C '/usr/local/bin/aws_completer' aws
 
 export PATH=/usr/local/bin:${PATH}
+
+# Keep a lot of history.
+export HISTSIZE="INFINITE"

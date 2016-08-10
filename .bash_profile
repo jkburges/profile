@@ -50,6 +50,9 @@ google() {
     open "http://www.google.com.au/search?q=$1"
 }
 
+rdp_renderer() {
+    ssh -N -L 3389:$1:3389 bakery.biteable.com
+}
 
 export VAGRANT_USE_CACHER=true
 export VAGRANT_MEMORY=2048

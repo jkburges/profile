@@ -51,7 +51,7 @@ google() {
 }
 
 rdp_renderer() {
-    ssh -N -L 3389:$1:3389 bakery.biteable.com
+    ssh -N -L 5986:$1:5986 -L 3389:$1:3389 bakery.biteable.com
 }
 
 export VAGRANT_USE_CACHER=true

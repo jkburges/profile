@@ -54,12 +54,18 @@ rdp_renderer() {
     ssh -N -L 5986:$1:5986 -L 3389:$1:3389 bakery.biteable.com
 }
 
+logstash_forwarding() {
+    ssh -N -i ~/.ssh/jkburges-us-east-1.pem -L 5044:localhost:5044 -L 8080:localhost:80 ubuntu@52.206.145.72
+}
+
 export VAGRANT_USE_CACHER=true
 export VAGRANT_MEMORY=2048
 export VAGRANT_OS_KEYPAIR_NAME=nectar
 
 export PATH=/Applications/Vagrant/bin:$PATH
 export PATH=/Applications/terraform:$PATH
+
+export DEV_VIDEO_QUEUE=videos_jon
 
 ## bash history db
 #

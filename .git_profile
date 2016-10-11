@@ -1,7 +1,7 @@
 #!/bin/bash
 
 parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+    git rev-parse --abbrev-ref HEAD 2> /dev/null
 }
 
 source ${PROFILE_SRC_PATH}/git-completion.bash

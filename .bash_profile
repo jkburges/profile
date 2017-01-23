@@ -22,7 +22,6 @@ alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 function json_format { echo "$1" | python -m json.tool; }
 
 source ${PROFILE_SRC_PATH}/.git_profile
-source ${PROFILE_SRC_PATH}/.java_profile
 source ${PROFILE_SRC_PATH}/.brew_profile
 source ${PROFILE_SRC_PATH}/.ruby_profile
 

@@ -116,7 +116,7 @@ alias gc='git clone'
 # AWS CLI command completion
 complete -C '/usr/local/bin/aws_completer' aws
 
-export PATH=/usr/local/bin:${PATH}
+export PATH=/usr/local/opt/postgresql@9.4/bin:/usr/local/bin:${PATH}
 
 # Keep a lot of history.
 export HISTSIZE="INFINITE"

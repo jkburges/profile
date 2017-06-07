@@ -120,3 +120,7 @@ export PATH=/usr/local/opt/postgresql@9.4/bin:/usr/local/bin:${PATH}
 
 # Keep a lot of history.
 export HISTSIZE="INFINITE"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

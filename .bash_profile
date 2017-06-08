@@ -29,7 +29,7 @@ source ${PROFILE_SRC_PATH}/.ruby_profile
 PS1="\u@\h:\w\[\033[31m\](\$(parse_git_branch))\[\033[00m\]$ "
 
 export EDITOR=vi
-export PATH=/usr/local/Cellar/gnu-getopt/1.1.5/bin:/usr/local/Cellar/gnu-sed/4.2.2/bin:/usr/local/opt/coreutils/libexec/gnubin:${PATH}:/usr/local/apache-maven-2.2.1/bin:/usr/local/pgsql/bin:/Applications/grails-1.3.7/bin:/usr/local/mysql/bin:/Applications/groovy-1.8.1/bin:/Applications/phantomjs-1.9.7-macosx/bin:/Applications/packer
+export PATH=/usr/local/Cellar/mysql\@5.6/5.6.36_1/bin:/usr/local/Cellar/gnu-getopt/1.1.5/bin:/usr/local/Cellar/gnu-sed/4.2.2/bin:/usr/local/opt/coreutils/libexec/gnubin:${PATH}:/usr/local/apache-maven-2.2.1/bin:/usr/local/pgsql/bin:/Applications/grails-1.3.7/bin:/usr/local/mysql/bin:/Applications/groovy-1.8.1/bin:/Applications/phantomjs-1.9.7-macosx/bin:/Applications/packer
 
 ##
 # Your previous /Users/jburgess/.profile file was backed up as /Users/jburgess/.profile.macports-saved_2010-09-06_at_09:47:37
@@ -51,6 +51,10 @@ google() {
 
 rdp_renderer() {
     ssh -N -L 5986:$1:5986 -L 3389:$1:3389 bakery.biteable.com
+}
+
+mysql_forwarding() {
+    ssh -N -L 3306:$1:3306 -L 3306:$1:3306 bakery.biteable.com
 }
 
 logstash_forwarding() {

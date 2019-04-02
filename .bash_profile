@@ -29,7 +29,7 @@ source ${PROFILE_SRC_PATH}/.ruby_profile
 PS1="\u@\h:\w\[\033[31m\](\$(parse_git_branch))\[\033[00m\]$ "
 
 export EDITOR=vi
-export PATH=/usr/local/Cellar/mysql\@5.6/5.6.36_1/bin:/usr/local/Cellar/gnu-getopt/1.1.5/bin:/usr/local/Cellar/gnu-sed/4.2.2/bin:/usr/local/opt/coreutils/libexec/gnubin:${PATH}:/usr/local/apache-maven-2.2.1/bin:/usr/local/pgsql/bin:/Applications/grails-1.3.7/bin:/usr/local/mysql/bin:/Applications/groovy-1.8.1/bin:/Applications/phantomjs-1.9.7-macosx/bin:/Applications/packer
+export PATH=/usr/local/Cellar/mysql\@5.6/5.6.36_1/bin:/usr/local/Cellar/gnu-getopt/1.1.5/bin:/usr/local/Cellar/gnu-sed/4.2.2/bin:/usr/local/opt/coreutils/libexec/gnubin:${PATH}:/usr/local/apache-maven-2.2.1/bin:/usr/local/pgsql/bin:/Applications/grails-1.3.7/bin:/usr/local/mysql/bin:/Applications/groovy-1.8.1/bin:/Applications/phantomjs-1.9.7-macosx/bin:/Applications/packer:/Users/jkburges/Library/Python/3.6/bin
 
 ##
 # Your previous /Users/jburgess/.profile file was backed up as /Users/jburgess/.profile.macports-saved_2010-09-06_at_09:47:37
@@ -50,15 +50,15 @@ google() {
 }
 
 rdp_renderer() {
-    ssh -N -L 5986:$1:5986 -L 3389:$1:3389 bakery.biteable.com
+    ssh -N -L 5986:$1:5986 -L 3389:$1:3389 ci-apps.biteable.com
 }
 
 mysql_forwarding() {
-    ssh -N -L 3306:$1:3306 -L 3306:$1:3306 bakery.biteable.com
+    ssh -N -L 3306:$1:3306 bakery.biteable.com
 }
 
 logstash_forwarding() {
-    ssh -N -i ~/.ssh/jkburges-us-east-1.pem -L 5044:localhost:5044 -L 8080:localhost:80 ubuntu@52.206.145.72
+    ssh -N -L 5044:localhost:5044 -L 8080:localhost:80 -L 8081:logs.biteable.com:80 logindexer.biteable.com
 }
 
 export VAGRANT_USE_CACHER=true
@@ -68,7 +68,7 @@ export VAGRANT_OS_KEYPAIR_NAME=nectar
 export PATH=/Applications/Vagrant/bin:$PATH
 export PATH=/Applications/terraform:$PATH
 
-export DEV_VIDEO_QUEUE=videos_jon
+export RENDERER_ENV=rake
 
 ## bash history db
 #
@@ -120,7 +120,7 @@ alias gc='git clone'
 # AWS CLI command completion
 complete -C '/usr/local/bin/aws_completer' aws
 
-export PATH=/usr/local/opt/postgresql@9.4/bin:/usr/local/bin:${PATH}
+export PATH=~/Library/Python/3.6/bin:/usr/local/opt/postgresql@9.4/bin:/usr/local/bin:${PATH}
 
 # Keep a lot of history.
 export HISTSIZE="INFINITE"

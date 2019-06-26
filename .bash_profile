@@ -60,6 +60,11 @@ logstash_forwarding() {
     ssh -N -L 5044:localhost:5044 -L 8080:localhost:80 -L 8081:logs.biteable.com:80 logindexer.biteable.com
 }
 
+punch_ssh() {
+    aws ec2 authorize-security-group-ingress --group-name ssh \
+        --ip-permissions IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges=["{CidrIp=`curl -s ipecho.net/plain`/32,Description=\"Ad-hoc SSH access for ${USER}\"}"]
+}
+
 export VAGRANT_USE_CACHER=true
 export VAGRANT_MEMORY=2048
 export VAGRANT_OS_KEYPAIR_NAME=nectar

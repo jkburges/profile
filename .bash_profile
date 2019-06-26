@@ -2,7 +2,6 @@
 alias l='ls -laGF'
 alias ll=l
 alias postgres_restart='sudo -u postgres PGDATA=/usr/local/pgsql/data pg_ctl restart'
-alias eb=~/.ebvenv/bin/eb
 
 alias trim="sed 's/^[[:space:]]*//;s/[[:space:]]*$//'"
 

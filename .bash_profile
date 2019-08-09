@@ -1,7 +1,6 @@
 # aliases
 alias l='ls -laGF'
 alias ll=l
-alias postgres_restart='sudo -u postgres PGDATA=/usr/local/pgsql/data pg_ctl restart'
 
 alias trim="sed 's/^[[:space:]]*//;s/[[:space:]]*$//'"
 
@@ -13,10 +12,6 @@ alias ce='chef exec'
 
 # Generally want to order by CPU usage.
 alias top="top -o cpu"
-
-# postgresql shortcuts
-alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
-alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 
 function json_format { echo "$1" | python -m json.tool; }
 
@@ -124,7 +119,11 @@ alias gc='git clone'
 # AWS CLI command completion
 complete -C '/usr/local/bin/aws_completer' aws
 
-export PATH=~/Library/Python/3.6/bin:/usr/local/opt/postgresql@9.4/bin:/usr/local/bin:${PATH}
+export PATH=~/Library/Python/3.6/bin:/usr/local/bin:${PATH}
+
+# go
+export GOPATH=$HOME/go
+export PATH=${PATH}:/usr/local/go/bin:${GOPATH}/bin
 
 # Keep a lot of history.
 export HISTSIZE="INFINITE"

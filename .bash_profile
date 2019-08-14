@@ -57,7 +57,7 @@ logstash_forwarding() {
 
 punch_ssh() {
     aws ec2 authorize-security-group-ingress --group-name ssh \
-        --ip-permissions IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges=["{CidrIp=`curl -s ipecho.net/plain`/32,Description=\"Ad-hoc SSH access for ${USER}\"}"]
+        --ip-permissions IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges=["{CidrIp=`curl -s https://ipecho.net/plain`/32,Description=\"Ad-hoc SSH access for ${USER}\"}"]
 }
 
 export VAGRANT_USE_CACHER=true

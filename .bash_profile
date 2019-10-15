@@ -60,11 +60,6 @@ punch_ssh() {
         --ip-permissions IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges=["{CidrIp=`curl -s https://ipecho.net/plain`/32,Description=\"Ad-hoc SSH access for ${USER}\"}"]
 }
 
-export VAGRANT_USE_CACHER=true
-export VAGRANT_MEMORY=2048
-export VAGRANT_OS_KEYPAIR_NAME=nectar
-
-export PATH=/Applications/Vagrant/bin:$PATH
 export PATH=/Applications/terraform:$PATH
 
 export RENDERER_ENV=rake

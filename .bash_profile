@@ -13,7 +13,7 @@ alias ce='chef exec'
 # Generally want to order by CPU usage.
 alias top="top -o cpu"
 
-function json_format { echo "$1" | python -m json.tool; }
+alias json_format="jq -C | less -R"
 
 source ${PROFILE_SRC_PATH}/.git_profile
 source ${PROFILE_SRC_PATH}/.brew_profile

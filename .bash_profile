@@ -52,7 +52,7 @@ mysql_forwarding() {
 }
 
 logstash_forwarding() {
-    ssh -N -L 5044:localhost:5044 -L 8080:localhost:80 -L 8081:logs.biteable.com:80 logindexer.biteable.com
+    ssh -N -L 5044:localhost:5044 -L 8080:logs.biteable.com:80 -L 8081:logs.biteable.com:80 logindexer.biteable.com
 }
 
 punch_ssh() {

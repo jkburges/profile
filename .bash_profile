@@ -113,6 +113,16 @@ alias gc='git clone'
 
 # AWS CLI command completion
 complete -C '/usr/local/bin/aws_completer' aws
+complete -C '/usr/local/bin/aws2_completer' aws2
+alias aws=aws2
+
+# docker command completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
+
+# heroku autocomplete setup
+HEROKU_AC_BASH_SETUP_PATH=/Users/jkburges/Library/Caches/heroku/autocomplete/bash_setup && test -f $HEROKU_AC_BASH_SETUP_PATH && source $HEROKU_AC_BASH_SETUP_PATH;
 
 export PATH=~/Library/Python/3.6/bin:/usr/local/bin:${PATH}
 

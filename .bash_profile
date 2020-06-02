@@ -55,9 +55,14 @@ logstash_forwarding() {
     ssh -N -L 5044:localhost:5044 -L 8080:logs.biteable.com:80 -L 8081:logs.biteable.com:80 logindexer.biteable.com
 }
 
-punch_ssh() {
-    aws ec2 authorize-security-group-ingress --group-name ssh \
-        --ip-permissions IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges=["{CidrIp=`curl -s https://ipecho.net/plain`/32,Description=\"Ad-hoc SSH access for ${USER}\"}"]
+punch_firewall() {
+    CIDR="`dig +short myip.opendns.com @resolver1.opendns.com`/32"
+    aws ec2 authorize-security-group-ingress \
+        --group-name ssh \
+        --ip-permissions IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges="[{CidrIp=${CIDR},Description=\"Ad-hoc SSH access for ${USER}\"}]"
+    aws ec2 authorize-security-group-ingress \
+        --group-name webapp_reporting \
+        --ip-permissions IpProtocol=tcp,FromPort=5432,ToPort=5432,IpRanges="[{CidrIp=${CIDR},Description=\"Ad-hoc webapp reporting access for ${USER}\"}]"
 }
 
 export PATH=/Applications/terraform:$PATH

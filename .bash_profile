@@ -65,6 +65,11 @@ punch_firewall() {
         --ip-permissions IpProtocol=tcp,FromPort=5432,ToPort=5432,IpRanges="[{CidrIp=${CIDR},Description=\"Ad-hoc webapp reporting access for ${USER}\"}]"
 }
 
+fetch_zymbols() {
+    curl "$1" | jq -C ".zymbols | fromjson"
+}
+
+
 export PATH=/Applications/terraform:$PATH
 
 export RENDERER_ENV=rake

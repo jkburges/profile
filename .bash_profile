@@ -69,6 +69,10 @@ fetch_zymbols() {
     curl "$1" | jq -C ".zymbols | fromjson"
 }
 
+search_github() {
+    open "https://github.com/search?q=$1"
+}
+alias sg="search_github"
 
 export PATH=/Applications/terraform:$PATH
 

@@ -52,7 +52,8 @@ mysql_forwarding() {
 }
 
 logstash_forwarding() {
-    ssh -N -L 5044:localhost:5044 -L 8080:logs.biteable.com:80 -L 8081:logs.biteable.com:80 logindexer.biteable.com
+    LOGSTASH_INSTANCE_ID=`aws ec2 describe-instances --filters 'Name=tag:Name,Values=Logstash'   --output text --query 'Reservations[*].Instances[*].InstanceId'`
+    mssh ubuntu@${LOGSTASH_INSTANCE_ID} -N -L 8080:logs.biteable.com:80
 }
 
 punch_firewall() {

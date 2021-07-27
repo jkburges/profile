@@ -66,6 +66,14 @@ punch_firewall() {
         --ip-permissions IpProtocol=tcp,FromPort=5432,ToPort=5432,IpRanges="[{CidrIp=${CIDR},Description=\"Ad-hoc webapp reporting access for ${USER}\"}]"
 }
 
+mssh_connect() {
+    IP_ADDRESS=`dig +short $1 | tail -n 1`
+    INSTANCE_ID=`aws ec2 describe-instances --filter Name=ip-address,Values=${IP_ADDRESS} --query 'Reservations[].Instances[].[InstanceId]' --output text`
+
+    shift
+    mssh ubuntu@${INSTANCE_ID} "$@"
+}
+
 fetch_zymbols() {
     curl "$1" | jq -C ".zymbols | fromjson"
 }

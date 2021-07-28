@@ -1,0 +1,11 @@
+[user]
+	email = jkburges@gmail.com
+	signingkey = 1AAFDD647E4BCB83
+[core]
+	editor = vim
+[alias]
+	co = checkout
+	br = branch
+	save = !git add -A && git commit -m 'SAVE POINT'
+[commit]
+	gpgsign = true

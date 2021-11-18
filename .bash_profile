@@ -23,7 +23,8 @@ source ${PROFILE_SRC_PATH}/.ruby_profile
 PS1="\u@\h:\w\[\033[31m\](\$(parse_git_branch))\[\033[00m\]$ "
 
 export EDITOR=vi
-export PATH=/usr/local/Cellar/mysql\@5.6/5.6.36_1/bin:/usr/local/Cellar/gnu-getopt/1.1.5/bin:/usr/local/Cellar/gnu-sed/4.2.2/bin:/usr/local/opt/coreutils/libexec/gnubin:${PATH}:/usr/local/apache-maven-2.2.1/bin:/usr/local/pgsql/bin:/Applications/grails-1.3.7/bin:/usr/local/mysql/bin:/Applications/groovy-1.8.1/bin:/Applications/phantomjs-1.9.7-macosx/bin:/Applications/packer:/Users/jkburges/Library/Python/3.6/bin
+export PATH=/usr/local/Cellar/mysql\@5.6/5.6.36_1/bin:/usr/local/Cellar/gnu-getopt/1.1.5/bin:/usr/local/Cellar/gnu-sed/4.2.2/bin:/usr/local/opt/coreutils/libexec/gnubin:${PATH}:/usr/local/apache-maven-2.2.1/bin:/usr/local/pgsql/bin:/Applications/grails-1.3.7/bin:/usr/local/mysql/bin:/Applications/groovy-1.8.1/bin:/Applications/phantomjs-1.9.7-macosx/bin:/Applications/packer:/Users/jkburges/Library/Python/3.6/bin:/Users/jkburges/Library/Python/3.9/bin
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
 ##
 # Your previous /Users/jburgess/.profile file was backed up as /Users/jburgess/.profile.macports-saved_2010-09-06_at_09:47:37
@@ -63,7 +64,7 @@ punch_firewall() {
         --ip-permissions IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges="[{CidrIp=${CIDR},Description=\"Ad-hoc SSH access for ${USER}\"}]"
     aws ec2 authorize-security-group-ingress \
         --group-name webapp_reporting \
-        --ip-permissions IpProtocol=tcp,FromPort=5432,ToPort=5432,IpRanges="[{CidrIp=${CIDR},Description=\"Ad-hoc webapp reporting access for ${USER}\"}]"
+        --ip-permissions IpProtocol=tcp,FromPort=5432,ToPort=5439,IpRanges="[{CidrIp=${CIDR},Description=\"Ad-hoc webapp reporting access for ${USER}\"}]"
 }
 
 mssh_connect() {
@@ -136,8 +137,8 @@ alias gc='git clone'
 
 # AWS CLI command completion
 complete -C '/usr/local/bin/aws_completer' aws
-complete -C '/usr/local/bin/aws2_completer' aws2
-alias aws=aws2
+# complete -C '/usr/local/bin/aws2_completer' aws2
+# alias aws=aws2
 
 # docker command completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then

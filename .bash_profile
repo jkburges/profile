@@ -52,11 +52,6 @@ mysql_forwarding() {
     ssh -N -L 3306:$1:3306 bakery.biteable.com
 }
 
-logstash_forwarding() {
-    LOGSTASH_INSTANCE_ID=`aws ec2 describe-instances --filters 'Name=tag:Name,Values=Logstash'   --output text --query 'Reservations[*].Instances[*].InstanceId'`
-    mssh ubuntu@${LOGSTASH_INSTANCE_ID} -N -L 8080:logs.biteable.com:80
-}
-
 punch_firewall() {
     CIDR="`dig +short myip.opendns.com @resolver1.opendns.com`/32"
     aws ec2 authorize-security-group-ingress \

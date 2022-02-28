@@ -3,6 +3,7 @@
 	signingkey = BE9AFBD34EF33946
 [core]
 	editor = vim
+	excludesFile = ~/.gitignore
 [alias]
 	co = checkout
 	br = branch
@@ -16,3 +17,5 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[init]
+	defaultBranch = main

@@ -81,8 +81,6 @@ alias sg="search_github"
 
 export PATH=/Applications/terraform:$PATH
 
-export RENDERER_ENV=rake
-
 ## bash history db
 #
 # increase the history file size to 20,000 lines

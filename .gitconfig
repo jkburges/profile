@@ -1,6 +1,6 @@
 [user]
 	email = jon@biteable.com
-	signingkey = 072F55DAE5E7706B
+	signingkey = 38D5F89366BE9C21
 [core]
 	editor = vim
 	excludesFile = ~/.gitignore

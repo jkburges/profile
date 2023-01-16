@@ -42,13 +42,13 @@ aws_credentials() {
   $(aws sso get-role-credentials --role-name `aws configure get sso_role_name` \
     --account-id `aws configure get sso_account_id` \
     --access-token `cat ~/.aws/sso/cache/$(aws configure get sso_start_url \
-    | tr -d '\n' | sha1sum  | awk '{ print $1 }').json | jq -r '.accessToken'` \
+    | tr -d '\n' | shasum  | awk '{ print $1 }').json | jq -r '.accessToken'` \
     | jq -r '.roleCredentials | {AWS_ACCESS_KEY_ID:.accessKeyId, AWS_SECRET_ACCESS_KEY:.secretAccessKey, AWS_SESSION_TOKEN:.sessionToken} | keys[] as $k | "export \($k)=\(.[$k])"')
     aws sts get-caller-identity --no-cli-pager
 }
 
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
+#source /usr/local/opt/chruby/share/chruby/chruby.sh
+#source /usr/local/opt/chruby/share/chruby/auto.sh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -57,3 +57,12 @@ export NVM_DIR="$HOME/.nvm"
 # Turn off the annoying AWS CLI pager
 export AWS_PAGER=""
 
+# Python stuff for EB CLI
+eval "$(pyenv init -)"
+export PATH=${HOME}/.local/bin:${PATH}
+export PATH="/Users/jkburges/.ebcli-virtual-env/executables:$PATH"
+
+# node
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion

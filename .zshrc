@@ -13,7 +13,7 @@ CASE_SENSITIVE="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aws docker docker-compose git)
+plugins=(aws docker docker-compose git terraform)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -32,9 +32,23 @@ fi
 # For a full list of active aliases, run `alias`.
 alias ll="ls -la"
 
-alias punch_firewall="aws ec2 authorize-security-group-ingress --group-name webapp_reporting \
+# Renderer
+export CHROME_PATH="/Users/jkburges/chrome/mac_arm-124.0.6358.0/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
+export FONT_HOST_RENDERER="https://us-east-1-biteable-assets.s3.amazonaws.com"
+
+punch_firewall() {
+  aws ec2 authorize-security-group-ingress --group-name redshift_warehouse \
+  --protocol tcp --port 5439 \
+  --cidr `curl -s https://ipv4.icanhazip.com`/32
+
+  aws ec2 authorize-security-group-ingress --group-name webapp_reporting \
   --protocol tcp --port 5432 \
-  --cidr `dig +short myip.opendns.com @resolver1.opendns.com`/32"
+  --cidr `curl -s https://ipv4.icanhazip.com`/32
+
+  aws ec2 authorize-security-group-ingress --group-name ssh \
+  --protocol tcp --port 22 \
+  --cidr `curl -s https://ipv4.icanhazip.com`/32
+}
 
 aws_credentials() {
   unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN
@@ -47,8 +61,8 @@ aws_credentials() {
     aws sts get-caller-identity --no-cli-pager
 }
 
-#source /usr/local/opt/chruby/share/chruby/chruby.sh
-#source /usr/local/opt/chruby/share/chruby/auto.sh
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -66,3 +80,12 @@ export PATH="/Users/jkburges/.ebcli-virtual-env/executables:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+export GH_PAGER=
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+
+export GOPATH=${HOME}/go
+
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/opt/homebrew/opt/ffmpeg@6/bin:$PATH"

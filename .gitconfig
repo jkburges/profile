@@ -7,15 +7,13 @@
 [alias]
 	co = checkout
 	br = branch
-	save = !git add -A && git commit -m 'SAVE POINT'
+	saveskip = !git add -A && git commit -m 'SAVE POINT' -m '[skip ci]'
+  save = !git add -A && git commit -m 'SAVE POINT'
 [commit]
 	gpgsign = true
 [pull]
 	rebase = false
-[filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
 [init]
 	defaultBranch = main
+[diff]
+	renameLimit = 1500
